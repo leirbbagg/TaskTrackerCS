@@ -1,0 +1,14 @@
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/bin/Debug/net10.0/TaskTrackerCS
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/bin/Debug/net10.0/TaskTrackerCS.deps.json
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/bin/Debug/net10.0/TaskTrackerCS.runtimeconfig.json
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/bin/Debug/net10.0/TaskTrackerCS.dll
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/bin/Debug/net10.0/TaskTrackerCS.pdb
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/TaskTrackerCS.GeneratedMSBuildEditorConfig.editorconfig
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/TaskTrackerCS.AssemblyInfoInputs.cache
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/TaskTrackerCS.AssemblyInfo.cs
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/TaskTrackerCS.csproj.CoreCompileInputs.cache
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/TaskTrackerCS.dll
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/refint/TaskTrackerCS.dll
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/TaskTrackerCS.pdb
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/TaskTrackerCS.genruntimeconfig.cache
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/ref/TaskTrackerCS.dll
