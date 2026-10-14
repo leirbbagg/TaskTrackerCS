@@ -12,3 +12,4 @@
 /home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/TaskTrackerCS.pdb
 /home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/TaskTrackerCS.genruntimeconfig.cache
 /home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/ref/TaskTrackerCS.dll
+/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/Debug/net10.0/TaskTrackerCS.sourcelink.json
