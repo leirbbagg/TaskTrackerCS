@@ -1,6 +1,6 @@
 namespace TaskTrackerCS.Models
 {
-    public class Task
+    public class TaskToDo
     {
         public int Id { get; init; }
         public string Description { get; private set; }
@@ -8,7 +8,7 @@ namespace TaskTrackerCS.Models
         public DateTime CreatedAt { get; init; } = DateTime.Now;
         public DateTime UpdatedAt { get; private set; } = DateTime.Now;
 
-        public Task(int id, string description)
+        public TaskToDo(int id, string description)
         {
             Id = id;
             Description = description;

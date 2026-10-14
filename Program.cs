@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TaskTrackerCS
+﻿namespace TaskTrackerCS
 {
     public class Program
     {

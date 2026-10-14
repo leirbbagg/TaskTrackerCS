@@ -1,4 +1,7 @@
 using System;
+using System.Runtime.InteropServices;
+using TaskTrackerCS.Services;
+using TaskTrackerCS.Repo;
 
 namespace TaskTrackerCS
 {
@@ -14,9 +17,9 @@ namespace TaskTrackerCS
             switch (args[0])
             {
                 case "add" when args.Length == 2:
-                    Console.WriteLine($"add {args[1]}");
-
-                    // * not implemented
+                    var taskHandler = new TaskHandler(new TaskRepository());
+                    taskHandler.Add(args[1]);
+                    Console.WriteLine($"Task {args[1]} added! ");
                     break;
 
                 case "update" when args.Length == 3 && int.TryParse(args[1], out var id):
