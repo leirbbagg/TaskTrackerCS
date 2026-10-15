@@ -7,6 +7,7 @@ namespace TaskTrackerCS
 {
     public static class CommandHandler
     {
+        private readonly static TaskHandler _th = new TaskHandler(new TaskRepository());
         public static void HandleCommands(string[] args)
         {
             if (args.Length == 0)
@@ -17,8 +18,7 @@ namespace TaskTrackerCS
             switch (args[0])
             {
                 case "add" when args.Length == 2:
-                    var taskHandler = new TaskHandler(new TaskRepository());
-                    taskHandler.Add(args[1]);
+                    _th.Add(args[1]);
                     Console.WriteLine($"Task {args[1]} added! ");
                     break;
 
@@ -29,9 +29,7 @@ namespace TaskTrackerCS
                     break;
 
                 case "delete" when args.Length == 2 && int.TryParse(args[1], out var delId):
-                    Console.WriteLine($"delete {delId}");
-
-                    // * not implemented
+                    _th.Delete(delId);
                     break;
 
                 case "mark-progress" when args.Length == 2 && int.TryParse(args[1], out var pId):

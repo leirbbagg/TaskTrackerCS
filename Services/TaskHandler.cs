@@ -24,5 +24,16 @@ namespace TaskTrackerCS.Services
             _repo.Save(tasks);
             return task;
         }
+
+        public void Delete(int id)
+        {
+            var tasks = _repo.Load();
+            var taskDelete = tasks.RemoveAll(t => t.Id == id);
+
+            if (taskDelete == 0)
+                throw new InvalidOperationException($"Tarefa {id} não foi encontrada.");
+
+            _repo.Save(tasks);
+        }
     }
 }
