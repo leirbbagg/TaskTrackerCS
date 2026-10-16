@@ -1,15 +1,26 @@
 using System;
-using System.Runtime.InteropServices;
 using TaskTrackerCS.Services;
 using TaskTrackerCS.Repo;
+using TaskTrackerCS.Models;
+using System.Globalization;
+using System.ComponentModel.DataAnnotations;
 
 namespace TaskTrackerCS
 {
     public static class CommandHandler
     {
         private readonly static TaskHandler _th = new TaskHandler(new TaskRepository());
+
+        private static readonly Dictionary<string, EStatusTask> _filters = new(StringComparer.OrdinalIgnoreCase)
+        {
+            ["todo"] = EStatusTask.Todo,
+            ["in-progress"] = EStatusTask.InProgress,
+            ["progress"] = EStatusTask.InProgress,
+            ["done"] = EStatusTask.Done
+        };
         public static void HandleCommands(string[] args)
         {
+            EStatusTask? filter = null;
             if (args.Length == 0)
             {
                 PrintUsage();
@@ -19,42 +30,43 @@ namespace TaskTrackerCS
             {
                 case "add" when args.Length == 2:
                     _th.Add(args[1]);
-                    Console.WriteLine($"Task {args[1]} added! ");
+                    Console.WriteLine($"Task {args[1]} added!");
                     break;
 
                 case "update" when args.Length == 3 && int.TryParse(args[1], out var id):
-                    Console.WriteLine($"update {id} {args[2]}");
-
-                    // * not implemented
+                    _th.Rename(id, args[2]);
+                    Console.WriteLine($"Task {id} edited!");
                     break;
 
                 case "delete" when args.Length == 2 && int.TryParse(args[1], out var delId):
                     _th.Delete(delId);
+                    Console.WriteLine($"Task {args[1]} deleted!");
                     break;
 
                 case "mark-progress" when args.Length == 2 && int.TryParse(args[1], out var pId):
-                    Console.WriteLine($"mark-in-progress {pId}");
-
-                    // * not implemented
+                    _th.MarkProgress(pId);
+                    Console.WriteLine($"Task {pId} marked as in progress!");
                     break;
 
                 case "mark-done" when args.Length == 2 && int.TryParse(args[1], out var dId):
-                    Console.WriteLine($"mark-done {dId}");
-
-                    // * not implemented
+                    _th.MarkDone(dId);
+                    Console.WriteLine($"Task {dId} marked as done!");
                     break;
 
                 case "list" when args.Length <= 2:
                     if (args.Length == 2)
                     {
-                        Console.WriteLine($"list {args[1]}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"list");
+                        if (!_filters.TryGetValue(args[1], out var status))
+                        {
+                            PrintUsage();
+                            Environment.Exit(0);
+                        }
+                        filter = status;
                     }
 
-                    // * not implemented
+                    var list = _th.List(filter);
+                    foreach (var task in list)
+                        Console.WriteLine($"ID: {task.Id} |\nDescription: {task.Description} |\nCreated at: {task.CreatedAt.ToString("HH:mm:ss - d/M/yyyy", CultureInfo.InvariantCulture)} |\nUpdated at: {task.UpdatedAt.ToString("HH:mm:ss - d/M/yyyy", CultureInfo.InvariantCulture)} |\nTask status: {task.Status} |\n");
                     break;
 
                 default:

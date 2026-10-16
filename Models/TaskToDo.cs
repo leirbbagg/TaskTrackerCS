@@ -1,17 +1,24 @@
+using System.Text.Json.Serialization;
+
 namespace TaskTrackerCS.Models
 {
     public class TaskToDo
     {
         public int Id { get; init; }
         public string Description { get; private set; }
-        public EStatusTask Status { get; private set; } = EStatusTask.Todo;
-        public DateTime CreatedAt { get; init; } = DateTime.Now;
-        public DateTime UpdatedAt { get; private set; } = DateTime.Now;
+    
+        public EStatusTask Status { get; set; }
+        public DateTime CreatedAt { get; init; }
+        public DateTime UpdatedAt { get; private set; } 
 
+        [JsonConstructor]
         public TaskToDo(int id, string description)
         {
             Id = id;
             Description = description;
+            Status = EStatusTask.Todo;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
         }
 
         public void Rename(string newDescription)
