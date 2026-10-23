@@ -7,9 +7,9 @@ namespace TaskTrackerCS.Services
 {
     public class TaskHandler
     {
-        private readonly TaskRepository _repo;
+        private readonly TaskRepositoryJson _repo;
 
-        public TaskHandler(TaskRepository repo)
+        public TaskHandler(TaskRepositoryJson repo)
         {
             _repo = repo;
         }

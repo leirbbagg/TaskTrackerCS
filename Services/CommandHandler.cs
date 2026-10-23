@@ -9,7 +9,7 @@ namespace TaskTrackerCS
 {
     public static class CommandHandler
     {
-        private readonly static TaskHandler _th = new TaskHandler(new TaskRepository());
+        private readonly static TaskHandler _th = new TaskHandler(new TaskRepositoryJson());
 
         private static readonly Dictionary<string, EStatusTask> _filters = new(StringComparer.OrdinalIgnoreCase)
         {

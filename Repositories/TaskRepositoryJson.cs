@@ -5,7 +5,7 @@ using TaskTrackerCS.Models;
 
 namespace TaskTrackerCS.Repo
 {
-    public class TaskRepository
+    public class TaskRepositoryJson
     {
         private readonly string _path;
         private static readonly JsonSerializerOptions _options = new()
@@ -14,7 +14,7 @@ namespace TaskTrackerCS.Repo
             Converters = { new JsonStringEnumConverter() }
         };
 
-        public TaskRepository(string path = "tasks.json")
+        public TaskRepositoryJson(string path = "tasks.json")
         {
             _path = path;
         }
@@ -25,6 +25,7 @@ namespace TaskTrackerCS.Repo
                 return new List<TaskToDo>();
 
             var json = File.ReadAllText(_path);
+            Console.WriteLine("");
             return JsonSerializer.Deserialize<List<TaskToDo>>(json, _options) ?? new();
         }
 
