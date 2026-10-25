@@ -1,37 +1,20 @@
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using TaskTrackerCS.Data;
 using TaskTrackerCS.Models;
-
 
 namespace TaskTrackerCS.Repositories
 {
-    public class JsonTaskRepository
+    public class TaskRepository : ITaskRepository
     {
-        private readonly string _path;
-        private static readonly JsonSerializerOptions _options = new()
+        private readonly TaskDbContext _context; 
+        public TaskRepository(TaskDbContext context)
         {
-            WriteIndented = true,
-            Converters = { new JsonStringEnumConverter() }
-        };
-
-        public JsonTaskRepository(string path = "tasks.json")
-        {
-            _path = path;
+            _context = context;
         }
-
-        public List<TaskToDo> Load()
+        public TaskToDo Add(TaskToDo task)
         {
-            if (!File.Exists(_path))
-                return new List<TaskToDo>();
-
-            var json = File.ReadAllText(_path);
-            return JsonSerializer.Deserialize<List<TaskToDo>>(json, _options) ?? new();
-        }
-
-        public void Save(List<TaskToDo> tarefas)
-        {
-            var json = JsonSerializer.Serialize(tarefas, _options);
-            File.WriteAllText(_path, json);
+            _context.Tasks.Add(task);
+            _context.SaveChanges();
+            return task;
         }
     }
 }

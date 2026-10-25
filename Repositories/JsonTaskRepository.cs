@@ -3,9 +3,9 @@ using System.Text.Json.Serialization;
 using TaskTrackerCS.Models;
 
 
-namespace TaskTrackerCS.Repo
+namespace TaskTrackerCS.Repositories
 {
-    public class TaskRepository
+    public class JsonTaskRepository
     {
         private readonly string _path;
         private static readonly JsonSerializerOptions _options = new()
@@ -14,7 +14,7 @@ namespace TaskTrackerCS.Repo
             Converters = { new JsonStringEnumConverter() }
         };
 
-        public TaskRepository(string path = "tasks.json")
+        public JsonTaskRepository(string path = "tasks.json")
         {
             _path = path;
         }
