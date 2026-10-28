@@ -4,14 +4,14 @@ namespace TaskTrackerCS.Models
 {
     public class TaskToDo
     {
-        public int Id { get; init; }
+        [JsonInclude] public int Id { get; init; }
         public string Description { get; private set; }
     
-        public EStatusTask Status { get; set; }
-        public DateTime CreatedAt { get; init; }
-        public DateTime UpdatedAt { get; private set; } 
+        [JsonInclude] public EStatusTask Status { get; set; }
+        [JsonInclude] public DateTime CreatedAt { get; init; }
+        [JsonInclude] public DateTime UpdatedAt { get; private set; } 
 
-        [JsonConstructor]
+        
         public TaskToDo(int id, string description)
         {
             Id = id;

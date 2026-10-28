@@ -30,5 +30,15 @@ namespace TaskTrackerCS.Repositories
         {
             _context.Dispose();
         }
+
+        public List<TaskToDo> ViewTasks(EStatusTask? statusFilter = null)
+        {
+            var inquiry = _context.Tasks.AsQueryable();
+
+            if (statusFilter is not null)
+                inquiry = inquiry.Where(t => t.Status == statusFilter);
+
+            return inquiry.OrderBy(t => t.Id).ToList();
+        }
     }
 }
