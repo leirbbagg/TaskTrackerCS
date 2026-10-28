@@ -26,10 +26,7 @@ namespace TaskTrackerCS.Repositories
             _context.SaveChanges();
             return true;
         }
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
+
 
         public List<TaskToDo> ViewTasks(EStatusTask? statusFilter = null)
         {
@@ -39,6 +36,15 @@ namespace TaskTrackerCS.Repositories
                 inquiry = inquiry.Where(t => t.Status == statusFilter);
 
             return inquiry.OrderBy(t => t.Id).ToList();
+        }
+
+        public TaskToDo? GetById(int id)
+        {
+            return _context.Tasks.FirstOrDefault(t => t.Id == id);
+        }
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

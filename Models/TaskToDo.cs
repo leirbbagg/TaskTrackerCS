@@ -4,7 +4,7 @@ namespace TaskTrackerCS.Models
 {
     public class TaskToDo
     {
-        [JsonInclude] public int Id { get; init; }
+        [JsonInclude] public int Id { get; private set; }
         public string Description { get; private set; }
     
         [JsonInclude] public EStatusTask Status { get; set; }
@@ -12,14 +12,16 @@ namespace TaskTrackerCS.Models
         [JsonInclude] public DateTime UpdatedAt { get; private set; } 
 
         
-        public TaskToDo(int id, string description)
+        public TaskToDo(string description)
         {
-            Id = id;
             Description = description;
             Status = EStatusTask.Todo;
             CreatedAt = DateTime.Now;
             UpdatedAt = DateTime.Now;
         }
+
+        // a useful method for defining IDs when using JSON for a database
+        internal void DefineId(int id) => Id = id;
 
         public void Rename(string newDescription)
         {
