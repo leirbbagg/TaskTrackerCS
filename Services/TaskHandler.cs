@@ -1,15 +1,15 @@
 using System;
 using System.Text.Json;
-using TaskTrackerCS.Repo;
+using TaskTrackerCS.Repositories;
 using TaskTrackerCS.Models;
 
 namespace TaskTrackerCS.Services
 {
     public class TaskHandler
     {
-        private readonly TaskRepository _repo;
+        private readonly ITaskRepository _repo;
 
-        public TaskHandler(TaskRepository repo)
+        public TaskHandler(ITaskRepository repo)
         {
             _repo = repo;
         }
@@ -19,7 +19,7 @@ namespace TaskTrackerCS.Services
             var tasks = _repo.Load();
             var id = tasks.Count == 0 ? 1 : tasks.Max(t => t.Id) + 1;
 
-            var task = new TaskToDo(id, description);
+            var task = new TaskToDo(description);
             tasks.Add(task);
             _repo.Save(tasks);
             return task;

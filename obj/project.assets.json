@@ -998,19 +998,19 @@
     ]
   },
   "packageFolders": {
-    "/home/gab/.nuget/packages/": {}
+    "/home/gab2/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/TaskTrackerCS.csproj",
+      "projectUniqueName": "/home/gab2/Downloads/arquivosperiodo29-10-1/arquivosperiodo29-10/TaskTrackerCS/TaskTrackerCS.csproj",
       "projectName": "TaskTrackerCS",
-      "projectPath": "/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/TaskTrackerCS.csproj",
-      "packagesPath": "/home/gab/.nuget/packages/",
-      "outputPath": "/home/gab/Documentos/programas/programas csharp/TaskTrackerCS/obj/",
+      "projectPath": "/home/gab2/Downloads/arquivosperiodo29-10-1/arquivosperiodo29-10/TaskTrackerCS/TaskTrackerCS.csproj",
+      "packagesPath": "/home/gab2/.nuget/packages/",
+      "outputPath": "/home/gab2/Downloads/arquivosperiodo29-10-1/arquivosperiodo29-10/TaskTrackerCS/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/gab/.nuget/NuGet/NuGet.Config"
+        "/home/gab2/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"

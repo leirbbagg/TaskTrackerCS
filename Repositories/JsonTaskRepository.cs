@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using TaskTrackerCS.Models;
 using TaskTrackerCS.Repositories;
+using TaskTrackerCS.Configuration;
 
 public class JsonTaskRepository : ITaskRepository
 {
@@ -13,9 +14,9 @@ public class JsonTaskRepository : ITaskRepository
         Converters = { new JsonStringEnumConverter() }
     };
 
-    public JsonTaskRepository(string path)
-    {
-        _path = path;
+    public JsonTaskRepository()
+    {  
+        _path = DbPath.Json();
     }
 
     public TaskToDo Add(TaskToDo task)
