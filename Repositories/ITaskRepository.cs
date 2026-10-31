@@ -8,5 +8,6 @@ namespace TaskTrackerCS.Repositories
         bool Remove(int id);
         List<TaskToDo> ViewTasks(EStatusTask? statusFilter = null);
         public TaskToDo? GetById(int id);
+        void Refresh(TaskToDo task);
     }
 }

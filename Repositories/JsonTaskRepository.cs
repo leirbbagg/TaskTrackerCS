@@ -15,7 +15,7 @@ public class JsonTaskRepository : ITaskRepository
     };
 
     public JsonTaskRepository()
-    {  
+    {
         _path = DbPath.Json();
     }
 
@@ -76,6 +76,15 @@ public class JsonTaskRepository : ITaskRepository
         return JsonSerializer.Deserialize<List<TaskToDo>>(json, _options) ?? new();
     }
 
+    public void Refresh(TaskToDo task)
+    {
+        var tasks = Load();
+        var index = tasks.FindIndex(t => t.Id == task.Id);
+        if (index < 0)
+            throw new InvalidOperationException($"Task {task.Id} not found.");
+        tasks[index] = task;
+        Save(tasks);
+    }
     private void Save(List<TaskToDo> tarefas)
     {
         var json = JsonSerializer.Serialize(tarefas, _options);

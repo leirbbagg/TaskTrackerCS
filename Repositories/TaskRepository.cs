@@ -42,9 +42,15 @@ namespace TaskTrackerCS.Repositories
         {
             return _context.Tasks.FirstOrDefault(t => t.Id == id);
         }
+
+        public void Refresh(TaskToDo task)
+        {
+            _context.SaveChanges();
+        }
         public void Dispose()
         {
             _context.Dispose();
         }
+
     }
 }

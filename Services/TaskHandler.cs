@@ -16,13 +16,7 @@ namespace TaskTrackerCS.Services
 
         public TaskToDo Add(string description)
         {
-            var tasks = _repo.Load();
-            var id = tasks.Count == 0 ? 1 : tasks.Max(t => t.Id) + 1;
-
-            var task = new TaskToDo(description);
-            tasks.Add(task);
-            _repo.Save(tasks);
-            return task;
+            return _repo.Add(new TaskToDo(description));
         }
 
         public void Delete(int id)
@@ -38,8 +32,7 @@ namespace TaskTrackerCS.Services
 
         public List<TaskToDo> List(EStatusTask? status = null)
         {
-            List<TaskToDo> tasks = _repo.Load();
-            return status is null ? tasks : tasks.Where(t => t.Status == status).ToList();
+            // not implemented
         }
 
         public void Rename(int id, string newDescription)
@@ -54,12 +47,11 @@ namespace TaskTrackerCS.Services
 
         private void Update(int id, Action<TaskToDo> action)
         {
-            var tasks = _repo.Load();
-            var taskEdit = tasks.FirstOrDefault(t => t.Id == id) ??
-                throw new InvalidOperationException($"Task {id} not found");
+            var task = _repo.GetById(id) ?? throw new InvalidOperationException($"Task {id} not found.");
 
-            action(taskEdit);
-            _repo.Save(tasks);
+            action(task);
+            _repo.Refresh(task);
+
         }
     }
 }

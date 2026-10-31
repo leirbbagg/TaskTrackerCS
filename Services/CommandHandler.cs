@@ -1,3 +1,5 @@
+// 
+
 using System;
 using TaskTrackerCS.Services;
 using TaskTrackerCS.Repositories;
@@ -9,7 +11,7 @@ namespace TaskTrackerCS
 {
     public static class CommandHandler
     {
-        private readonly static TaskHandler _th = new TaskHandler(new TaskRepository());
+        private readonly static TaskHandler _th = new TaskHandler(new JsonTaskRepository());
 
         private static readonly Dictionary<string, EStatusTask> _filters = new(StringComparer.OrdinalIgnoreCase)
         {
